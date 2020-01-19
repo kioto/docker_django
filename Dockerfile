@@ -1,7 +1,9 @@
 FROM ubuntu:18.04
+ENV DEBCONF_NOWARNINGS yes
 RUN apt-get -y update \
     && apt-get -y upgrade \
-    && apt-get install -y locales curl python3-distutils \
+    && apt-get install -y locales curl python3-distutils gcc gunicorn \
+    libmysqlclient-dev python3-dev mysql-server mysql-client libssl-dev \
     && curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
     && python3 get-pip.py \
     && pip install -U pip \
